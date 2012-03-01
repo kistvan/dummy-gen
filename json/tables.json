@@ -1,0 +1,28 @@
+{
+    "usage" : "\
+        trancate trueの場合はtablesプロパティの逆順にtrancateを実行してからデータ挿入を行います。      \
+        tables 配列の先頭から処理を行います。                                                   \
+            row データを生成する数                                                            \
+         \
+         \
+    ", 
+    "url" : "jdbc:mysql://localhost:8889/sumachan?useUnicode=true&characterEncoding=utf8&autoReconnect=true",
+    "user" : "root",
+    "pass" : "root",
+    "trancate" : false,
+    "tables" : [
+        { 
+            "name" : "user_info",
+            "row" : 3,
+            "columns" : {
+                "user_id" : ["IncrementalUniqueString"],
+                "daily_chance_last_challenged_at" : ["CurrentTimestamp","MaybeNull(90)"],
+                "showed_prompt_review" : ["Zero"],
+                "created_at" : ["CurrentTimestamp"],
+                "updated_at" : ["CurrentTimestamp"],
+                "push_new_arrival_enabled" : ["RandomBoolean"],
+                "push_drawing_close_enabled" : ["RandomBoolean"]
+            }
+        }
+    ]
+}
