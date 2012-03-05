@@ -16,4 +16,9 @@ public class CurrentTimestamp implements TypeValue {
 		return new DateTime().toDate();
 	}
 
+	@Override
+	public void eval(String arg) {
+		
+	}
+
 }

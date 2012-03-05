@@ -5,6 +5,8 @@ package dummygen.type;
 
 import java.util.Random;
 
+import org.apache.commons.lang3.math.NumberUtils;
+
 /**
  * 指定した確率でnullを返します。デフォルトは50％です
  *
@@ -39,6 +41,15 @@ public class MaybeNull implements ChainTypeValue {
 	public TypeValue with(TypeValue typeValue) {
 		this.typeValue = typeValue;
 		return this;
+	}
+
+	@Override
+	public void eval(String arg) {
+		int n = NumberUtils.toInt(arg);
+		if (n < 0 || n > 100) {
+			throw new IllegalArgumentException();
+		}
+		persent = n;
 	}
 
 }

@@ -6,6 +6,7 @@ package dummygen.type;
 import java.math.BigDecimal;
 
 import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.math.NumberUtils;
 
 /**
  * 0詰めの固定長数値文字列としてユニークな文字列を出力する値タイプです。<br/>
@@ -39,6 +40,15 @@ public class IncrementalUniqueString implements TypeValue {
 	public Object getValue() {
 		count = count.add(BigDecimal.ONE);
 		return StringUtils.leftPad(count.toString(), width, '0');
+	}
+
+	@Override
+	public void eval(String arg) {
+		int n = NumberUtils.toInt(arg);
+		if (n == 0) {
+			return;
+		}
+		width = n;
 	}
 
 }

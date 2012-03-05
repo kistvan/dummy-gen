@@ -11,11 +11,11 @@
     "pass" : "root",
     "trancate" : false,
     "tables" : [
-        { 
+        {
             "name" : "user_info",
             "row" : 3,
             "columns" : {
-                "user_id" : ["IncrementalUniqueString"],
+                "user_id" : ["IncrementalUniqueString(10)"],
                 "daily_chance_last_challenged_at" : ["CurrentTimestamp","MaybeNull(90)"],
                 "showed_prompt_review" : ["Zero"],
                 "created_at" : ["CurrentTimestamp"],
@@ -23,6 +23,21 @@
                 "push_new_arrival_enabled" : ["RandomBoolean"],
                 "push_drawing_close_enabled" : ["RandomBoolean"]
             }
+        },
+        {
+            "name" : "prize",
+            "row"  : 1,
+            "columns" : {
+                "name" : ["IncrementalUniqueString(5)"],
+                "open_time" : ["FormatTimestamp(2012/02/01 00:00:01)"],
+                "lottery_start_time" : ["FormatTimestamp(2012/02/01 00:00:01)"],
+                "display_start_time" : ["FormatTimestamp(2012/02/01 00:00:01)"],
+                "display_end_time" : ["FormatTimestamp(2012/02/01 00:00:01)"],
+                "lottery_status" : ["Zero"],
+                "created_at" : ["CurrentTimestamp"],
+                "updated_at" : ["CurrentTimestamp"]
+            }
         }
+        
     ]
 }

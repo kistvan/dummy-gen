@@ -17,4 +17,9 @@ public class Zero implements TypeValue {
 		return 0;
 	}
 
+	@Override
+	public void eval(String arg) {
+		
+	}
+
 }

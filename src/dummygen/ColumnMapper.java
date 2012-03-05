@@ -55,18 +55,24 @@ public class ColumnMapper {
 			String[] classNames = tableDef.columns.get(key);
 			TypeValue typeValue = null;
 			for (String clazz : classNames) {
-				String fqdn = StringUtils.split(TypeValue.class.getPackage().getName()  + "." + clazz, '(')[0];
-				 TypeValue val = (TypeValue)Class.forName(fqdn).newInstance();
-				 if (val instanceof ChainTypeValue) {
+				String[] params = StringUtils.split(TypeValue.class.getPackage().getName()  + "." + clazz, '(');
+				String fqdn = params[0];
+				String argText = "";
+				if (params.length > 1) {
+					argText = StringUtils.replace(params[1], ")", "");
+				}
+				TypeValue val = (TypeValue)Class.forName(fqdn).newInstance();
+				val.eval(argText);
+				if (val instanceof ChainTypeValue) {
 					 typeValue = ((ChainTypeValue) val).with(typeValue);
-				 } else {
+				} else {
 					 if (typeValueChace.containsKey(fqdn)) {
 						 typeValue = typeValueChace.get(fqdn);
 					 } else {
 						 typeValue = val;
 						 typeValueChace.put(fqdn, val);
 					 }
-				 }
+				}
 			}
 			result.add(typeValue.getValue());
 		}

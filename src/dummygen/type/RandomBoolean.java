@@ -37,4 +37,10 @@ public class RandomBoolean implements TypeValue {
 		return n < persent;
 	}
 
+	@Override
+	public void eval(String arg) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
