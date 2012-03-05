@@ -6,14 +6,14 @@
          \
          \
     ", 
-    "url" : "jdbc:mysql://localhost:8889/sumachan?useUnicode=true&characterEncoding=utf8&autoReconnect=true",
+    "url" : "jdbc:mysql://localhost:8889/TABLENAME?useUnicode=true&characterEncoding=utf8&autoReconnect=true",
     "user" : "root",
     "pass" : "root",
-    "trancate" : false,
+    "trancate" : true,
     "tables" : [
         {
             "name" : "user_info",
-            "row" : 3,
+            "row" : 10,
             "columns" : {
                 "user_id" : ["IncrementalUniqueString(10)"],
                 "daily_chance_last_challenged_at" : ["CurrentTimestamp","MaybeNull(90)"],

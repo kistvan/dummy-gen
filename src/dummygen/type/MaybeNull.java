@@ -6,6 +6,9 @@ package dummygen.type;
 import java.util.Random;
 
 import org.apache.commons.lang3.math.NumberUtils;
+import org.joda.time.DateTime;
+import org.joda.time.format.DateTimeFormat;
+import org.joda.time.format.DateTimeFormatter;
 
 /**
  * 指定した確率でnullを返します。デフォルトは50％です

@@ -24,6 +24,8 @@ public class Table {
 	public Connection con;
 	public ColumnMapper mapper;
 	
+	private boolean showedSql = false;
+	
 	/**
 	 * @param row 作成数
 	 * @param con コネクション
@@ -38,11 +40,13 @@ public class Table {
 	
 	public void allInsert() throws Exception {
 		System.out.println(tableName + " のインサート開始します");
+		showedSql = false;
 		
 		for (int i = 0; i < row; i++) {
 			insert();
 		}
 		System.out.println(tableName + " " + row + "件インサートしました");
+		showedSql = false;
 		
 		mapper.clearCache();
 	}
@@ -51,7 +55,10 @@ public class Table {
 		QueryRunner runner = new QueryRunner();
 		StringBuilder sql = new StringBuilder("INSERT INTO " + tableName + " (" + mapper.getColumnString() + ")VALUES");
 		sql.append("(" + mapper.getValuePlaceHolder() + ")");
-		System.out.println(sql);
+		if (!showedSql) {
+			System.out.println(sql);
+		}
 		runner.update(con, sql.toString(), mapper.getParams());
+		showedSql = true;
 	}
 }

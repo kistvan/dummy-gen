@@ -13,12 +13,15 @@ public class Main {
 
 	public static void main(String[] aras) throws Exception {
 		//テーブル情報の初期化
-		GeneratorBuilder builder = new GeneratorBuilder();
+		GeneratorBuilder builder = GeneratorBuilder.getInstance();
 		Connection con = null;
 		try {
 			con = builder.createConnection();
 			System.out.println("コネクション接続OK");
 			con.setAutoCommit(false);
+			
+			builder.truncate(con);
+			
 			builder.generate(con);
 			
 			con.commit();
