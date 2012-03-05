@@ -22,4 +22,9 @@ public class Zero implements TypeValue {
 		
 	}
 
+	@Override
+	public boolean isCacheValue() {
+		return true;
+	}
+
 }

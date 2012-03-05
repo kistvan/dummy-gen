@@ -21,4 +21,9 @@ public class CurrentTimestamp implements TypeValue {
 		
 	}
 
+	@Override
+	public boolean isCacheValue() {
+		return false;
+	}
+
 }

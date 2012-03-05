@@ -70,7 +70,9 @@ public class ColumnMapper {
 						 typeValue = typeValueChace.get(fqdn);
 					 } else {
 						 typeValue = val;
-						 typeValueChace.put(fqdn, val);
+						 if (val.isCacheValue()) {
+							 typeValueChace.put(fqdn, val);
+						 }
 					 }
 				}
 			}

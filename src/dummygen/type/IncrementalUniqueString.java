@@ -51,4 +51,9 @@ public class IncrementalUniqueString implements TypeValue {
 		width = n;
 	}
 
+	@Override
+	public boolean isCacheValue() {
+		return true;
+	}
+
 }

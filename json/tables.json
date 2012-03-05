@@ -1,6 +1,6 @@
 {
     "usage" : "\
-        trancate trueの場合はtablesプロパティの逆順にtrancateを実行してからデータ挿入を行います。      \
+        trancate trueの場合はtablesプロパティの逆順にtruncateを実行してからデータ挿入を行います。      \
         tables 配列の先頭から処理を行います。                                                   \
             row データを生成する数                                                            \
          \
@@ -20,7 +20,7 @@
                 "showed_prompt_review" : ["Zero"],
                 "created_at" : ["CurrentTimestamp"],
                 "updated_at" : ["CurrentTimestamp"],
-                "push_new_arrival_enabled" : ["RandomBoolean"],
+                "push_new_arrival_enabled" : ["RandomBoolean(20)"],
                 "push_drawing_close_enabled" : ["RandomBoolean"]
             }
         },
@@ -34,6 +34,18 @@
                 "display_start_time" : ["FormatTimestamp(2012/02/01 00:00:01)"],
                 "display_end_time" : ["FormatTimestamp(2012/02/01 00:00:01)"],
                 "lottery_status" : ["Zero"],
+                "created_at" : ["CurrentTimestamp"],
+                "updated_at" : ["CurrentTimestamp"]
+            }
+        },
+        {
+            "name" : "lot",
+            "row" : 30,
+            "columns" : {
+                "user_info_id" : ["RandomRangeNumber(1,10)"],
+                "prize_id" : ["RandomRangeNumber(1,1)"],
+                "lost" : ["Zero"],
+                "daily_chance_bonus" : ["Zero"],
                 "created_at" : ["CurrentTimestamp"],
                 "updated_at" : ["CurrentTimestamp"]
             }

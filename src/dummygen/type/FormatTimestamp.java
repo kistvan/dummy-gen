@@ -36,4 +36,9 @@ public class FormatTimestamp implements TypeValue {
 		}
 	}
 
+	@Override
+	public boolean isCacheValue() {
+		return false;
+	}
+
 }

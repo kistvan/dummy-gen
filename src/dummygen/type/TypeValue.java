@@ -20,5 +20,11 @@ public interface TypeValue {
 	 * @param arg jsonに指定された引数の文字列 指定されてなかった場合は空文字が渡される
 	 */
 	void eval(String arg);
+	
+	/**
+	 * 
+	 * @return キャッシュすべき値かどうか。インクリメントする値などの場合はtrue
+	 */
+	boolean isCacheValue();
 
 }

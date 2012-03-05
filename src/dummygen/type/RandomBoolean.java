@@ -43,4 +43,9 @@ public class RandomBoolean implements TypeValue {
 		
 	}
 
+	@Override
+	public boolean isCacheValue() {
+		return false;
+	}
+
 }

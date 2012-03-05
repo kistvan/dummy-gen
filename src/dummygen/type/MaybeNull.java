@@ -55,4 +55,9 @@ public class MaybeNull implements ChainTypeValue {
 		persent = n;
 	}
 
+	@Override
+	public boolean isCacheValue() {
+		return false;
+	}
+
 }
