@@ -5,6 +5,9 @@ package dummygen.type;
 
 import java.util.Random;
 
+import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.math.NumberUtils;
+
 /**
  * ランダムにtrue or falseの値を返す型
  *
@@ -39,8 +42,14 @@ public class RandomBoolean implements TypeValue {
 
 	@Override
 	public void eval(String arg) {
-		// TODO Auto-generated method stub
-		
+		if (StringUtils.isBlank(arg)) {
+			return ;
+		}
+		int n = NumberUtils.toInt(arg);
+		if (n < 0 || n > 100) {
+			throw new IllegalArgumentException();
+		}
+		persent = n;
 	}
 
 	@Override
