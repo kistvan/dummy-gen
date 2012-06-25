@@ -49,15 +49,17 @@ public class Table {
 		
 		int interval = 1;
 		int loop = 1;
+		BulkInsert bi = new BulkInsert(tableName, mapper);
 		for (int i = 0; i < row; i++) {
 			if (interval >= 10000) {
 				logger.info((loop * interval) + "件処理しました");
 				loop++;
 				interval = 0;
 			}
-			insert();
+			bi.insert(con);
 			interval++;
 		}
+		bi.flush(con);
 		logger.debug(tableName + " " + row + "件インサートしました");
 		showedSql = false;
 		

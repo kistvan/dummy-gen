@@ -41,5 +41,6 @@ public class Main {
 				con.close();
 			}
 		}
+		logger.info("データ生成終了しました");
 	}
 }

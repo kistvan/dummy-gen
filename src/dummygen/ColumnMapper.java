@@ -4,11 +4,13 @@
 package dummygen;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.apache.commons.lang3.StringUtils;
+import org.joda.time.DateTime;
 
 import dummygen.json.TableDef;
 import dummygen.type.ChainTypeValue;
@@ -79,6 +81,25 @@ public class ColumnMapper {
 			result.add(typeValue.getValue());
 		}
 		return result.toArray();
+	}
+	
+	public String getParamsSql() throws Exception {
+		Object[] values = getParams();
+		StringBuilder sql = new StringBuilder();
+		List<String> list = new ArrayList<String>();
+		for (Object o : values) {
+			if (o == null) {
+				list.add("null");
+			} else if (o instanceof String) {
+				list.add("'" + o + "'");
+			} else if(o instanceof Date) {
+				list.add("'" + new DateTime(o).toString("yyyy/MM/dd HH:mm:ss") + "'");
+			} else {
+				list.add(o.toString());
+			}
+		}
+		sql.append(StringUtils.join(list, ","));
+		return sql.toString();
 	}
 
 	public void clearCache() {
