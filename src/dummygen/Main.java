@@ -5,11 +5,16 @@ package dummygen;
 
 import java.sql.Connection;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 /**
  * main.
  *
  */
 public class Main {
+	
+	private static Logger logger = LoggerFactory.getLogger(Main.class);
 
 	public static void main(String[] aras) throws Exception {
 		//テーブル情報の初期化
@@ -17,7 +22,7 @@ public class Main {
 		Connection con = null;
 		try {
 			con = builder.createConnection();
-			System.out.println("コネクション接続OK");
+			logger.info("コネクション接続OK");
 			con.setAutoCommit(false);
 			
 			builder.truncate(con);
