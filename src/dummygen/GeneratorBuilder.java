@@ -72,9 +72,12 @@ public abstract class GeneratorBuilder {
 		if (!drivers.hasMoreElements()) {
 			throw new RuntimeException("jdbc driver not found..");
 		}
-		Driver d = drivers.nextElement();
-		if (StringUtils.contains(d.getClass().getName(), "mysql")) {
-			return new MysqlGeneratorBuilder();
+		Driver d = null;
+		while(drivers.hasMoreElements()) {
+			d = drivers.nextElement();
+			if (StringUtils.contains(d.getClass().getName(), "mysql")) {
+				return new MysqlGeneratorBuilder();
+			}
 		}
 		throw new RuntimeException(d + " : not support driver.");
 	}
