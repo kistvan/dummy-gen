@@ -24,7 +24,6 @@ public class RandomRangeNumber implements TypeValue {
 		Random r = new Random();
 		int range = to - from + 1;
 		int rand = r.nextInt(range);
-		System.out.println("rand:" + rand + " from:" + from + "range:" + range);
 		return rand + from;
 	}
 
